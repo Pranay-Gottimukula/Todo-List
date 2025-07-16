@@ -1,7 +1,7 @@
 import ListItems from "../ListItems/ListItems";
 import './TodoList.css';
 
-export default function TodoList({status, todos, toggleTodo, toggleEdit}){
+export default function TodoList({status, todos, toggleTodo, toggleEdit, toggleDelete}){
     const filteredTodos = status==="Due" ? todos.filter((todo) => !todo.done) : todos.filter((todo) => todo.done);
 
     return(
@@ -17,6 +17,7 @@ export default function TodoList({status, todos, toggleTodo, toggleEdit}){
                     id={todo.id}
                     onToggle={() => toggleTodo(todo.id)}
                     onEdit={toggleEdit}
+                    onDelete={toggleDelete}
                     ></ListItems>
                 </div>
             ))}

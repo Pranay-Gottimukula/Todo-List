@@ -23,7 +23,11 @@ function App() {
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, label: newLabel } : todo
     ));
-}
+  }
+
+  function handleDelete(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
 
   function getCurrentTimestamp() {
     const now = new Date();
@@ -46,10 +50,10 @@ function App() {
     <h1 className='text-5xl text-textcol bg-card font-bold p-4'>To-Do List</h1>
     <div className='flex flex-col items-center'>
       <div className="w-full max-w-xl my-3 px-4">
-        <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit}/>
+        <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit} toggleDelete={handleDelete}/>
         <ToggleForm todos={todos} setTodos={setTodos} getCurrentTimestamp={getCurrentTimestamp} />
         <hr className='text-card m-5'/>
-        <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit}/>
+        <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit} toggleDelete={handleDelete}/>
       </div>
     </div>
     </>

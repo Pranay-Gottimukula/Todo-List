@@ -53,7 +53,7 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
                 ? 'bg-gray-300 text-gray-600 cursor-not-allowed' 
                 : 'bg-green text-white hover:bg-blue/80'}`}
 >
-            Submit
+            Add
           </button>
         </div>
       </form>

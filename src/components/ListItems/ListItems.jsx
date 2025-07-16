@@ -16,6 +16,11 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
     setIsEditing(false);
   }
 
+  function handleDelete(e) {
+    e.preventDefault();
+    onDelete(id);
+  }
+
   return (
     <div>
       {!isEditing ? (
@@ -39,10 +44,10 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
               >
                 <Pencil size={18} className="text-blue" />
               </button>
-              
+
               <button
-                onClick={() => onDelete(id)}
-                className="p-1 rounded hover:bg-red/20 transition"
+                onClick={handleDelete}
+                className="p-1 rounded hover:bg-red-400/20 transition"
               >
                 <Trash2 size={18} className="text-red-500" />
               </button>
