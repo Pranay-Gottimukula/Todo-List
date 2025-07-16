@@ -16,10 +16,9 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
         setShowForm(false);
     };
 
-    if(showForm === true){
-        return(
-        <>
-        <div className="mx-6">
+    return(
+        showForm ? (
+        <div className="mx-6 my-2">
         <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 p-4 rounded-lg bg-card border-blue border-1 text-textcol shadow transition"
@@ -58,13 +57,8 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
           </button>
         </div>
       </form>
-      </div>
-        </>
-        );
-    }
-    else{
-        return(
-        <div className="mx-6">
+      </div> ) : (
+        <div className="mx-6 my-2">
             <button
               type="button"
               onClick={handleToggle}
@@ -74,6 +68,6 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
               <span className="text-xl">Add New Task</span>
             </button>
         </div>
-        );
-    }
-};
+      )
+    );
+}

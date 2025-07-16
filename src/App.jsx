@@ -19,6 +19,12 @@ function App() {
     setTodos(updated);
   }
 
+  function handleEdit(id, newLabel) {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, label: newLabel } : todo
+    ));
+}
+
   function getCurrentTimestamp() {
     const now = new Date();
 
@@ -40,10 +46,10 @@ function App() {
     <h1 className='text-5xl text-textcol bg-card font-bold p-4'>To-Do List</h1>
     <div className='flex flex-col items-center'>
       <div className="w-full max-w-xl my-3 px-4">
-        <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} />
+        <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit}/>
         <ToggleForm todos={todos} setTodos={setTodos} getCurrentTimestamp={getCurrentTimestamp} />
         <hr className='text-card m-5'/>
-        <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo} />
+        <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit}/>
       </div>
     </div>
     </>
