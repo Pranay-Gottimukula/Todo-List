@@ -38,10 +38,14 @@ function App() {
   return (
     <>
     <h1 className='text-5xl text-textcol bg-card font-bold p-4'>To-Do List</h1>
-    <hr className='line' />
-    <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo}></TodoList>
-    <ToggleForm todos={todos} setTodos={setTodos} getCurrentTimestamp={getCurrentTimestamp} />
-    <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo}></TodoList>
+    <div className='flex flex-col items-center'>
+      <div className="w-full max-w-xl my-3 px-4">
+        <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} />
+        <ToggleForm todos={todos} setTodos={setTodos} getCurrentTimestamp={getCurrentTimestamp} />
+        <hr className='text-card m-5'/>
+        <TodoList status={'Completed'} todos={todos} toggleTodo={toggleTodo} />
+      </div>
+    </div>
     </>
   )
 }

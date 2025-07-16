@@ -19,21 +19,60 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
     if(showForm === true){
         return(
         <>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="task">Task:
-                <input type="text" name="task" value={taskInput} onChange={(e) => setTaskInput(e.target.value)} required/>
-            </label>
-            <input type="button" value="Cancel" onClick={handleToggle}/>
-            <input type="submit" value="Submit"/>
-        </form>
+        <div className="mx-6">
+        <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 p-4 rounded-lg bg-card border-blue border-1 text-textcol shadow transition"
+        >
+        <label className="flex flex-col gap-2 text-xl">
+          Task:
+          <input
+            type="text"
+            name="task"
+            value={taskInput}
+            placeholder="Enter the Task"
+            onChange={(e) => setTaskInput(e.target.value)}
+            required
+            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue"
+          />
+        </label>
+
+        <div className="flex justify-end gap-4">
+          <button
+            type="button"
+            onClick={handleToggle}
+            className="text-center px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            disabled={!taskInput.trim()}
+            className={`text-center px-4 py-2 rounded-lg transition
+              ${!taskInput.trim() 
+                ? 'bg-gray-300 text-gray-600 cursor-not-allowed' 
+                : 'bg-green text-white hover:bg-blue/80'}`}
+>
+            Submit
+          </button>
+        </div>
+      </form>
+      </div>
         </>
         );
     }
     else{
         return(
-        <div>
-        <button className='flex items-center m-3 gap-3 p-3 rounded-lg bg-card text-textcol cursor-pointer hover:bg-blue/10 transition' 
-        type='button' onClick={handleToggle}> + Add New Task</button>
+        <div className="mx-6">
+            <button
+              type="button"
+              onClick={handleToggle}
+              className="flex items-center gap-3 p-3 rounded-lg bg-card text-textcol text-xl border-blue border-1 cursor-pointer hover:bg-blue/10 transition w-full"
+            >
+              <span className="w-5 h-5 flex items-center justify-center text-blue text-xl font-bold">+</span>
+              <span className="text-xl">Add New Task</span>
+            </button>
         </div>
         );
     }
