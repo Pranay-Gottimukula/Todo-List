@@ -49,7 +49,7 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
             </label>
 
             {/* Three Dots Icon with Inline Menu */}
-            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+            <div className="absolute right-2 top-1/2 -translate-y-1/2 z-50">
               <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setShowMenu(!showMenu)}
@@ -59,14 +59,15 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
                 </button>
 
                 {showMenu && (
-                  <div className="absolute top-0 left-full ml-4 z-10 bg-card rounded-2xl shadow text-sm w-28 px-1 py-1">
+                  <div className="absolute top-3 right-full z-50 bg-bgcol rounded-2xl shadow-2xl text-sm w-28 px-1 py-1.5">
                     <button
                       onClick={() => {
                         setIsEditing(true);
                         setShowMenu(false);
                       }}
-                      className="block w-full text-left px-4 py-2 hover:bg-gray-600 hover:rounded-2xl text-blue-600"
+                      className="flex gap-2 items-center text-base w-full text-left px-4 py-2 hover:bg-gray-700 hover:rounded-2xl text-blue-600"
                     >
+                      <Pencil size={15} />
                       Edit
                     </button>
                     <button
@@ -74,8 +75,9 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
                         handleDelete(e);
                         setShowMenu(false);
                       }}
-                      className="block w-full text-left px-4 py-2 hover:bg-gray-600 hover:rounded-2xl text-red-600"
+                      className="flex gap-2 items-center text-base w-full text-left px-4 py-2 hover:bg-gray-700 hover:rounded-2xl text-red-600"
                     >
+                      <Trash2 size={15} />
                       Delete
                     </button>
                   </div>
