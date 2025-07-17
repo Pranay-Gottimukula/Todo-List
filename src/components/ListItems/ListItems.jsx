@@ -1,9 +1,21 @@
-import { useState } from 'react';
-import { Pencil, Trash2 } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Pencil, Trash2, MoreVertical } from 'lucide-react';
 
 export default function ListItems({ id, label, value, onToggle, onEdit, onDelete }) {
   const [taskInput, setTaskInput] = useState(label);
   const [isEditing, setIsEditing] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   function handleEditSubmit(e) {
     e.preventDefault();
@@ -26,7 +38,7 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
       {!isEditing ? (
         <div className="flex justify-center w-full">
           <div className="relative group w-full max-w-xl">
-            <label className="flex items-center gap-3 p-3 my-2 rounded-lg border-blue border-1 bg-card text-textcol cursor-pointer hover:bg-blue/10 transition">
+            <label className="flex items-center gap-3 p-3 my-2 rounded-4xl border-blue border-1 bg-card text-textcol cursor-pointer hover:bg-blue/10 transition">
               <input
                 type="radio"
                 checked={value}
@@ -36,29 +48,47 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
               <span className="text-xl">{label}</span>
             </label>
 
-            {/* Hover icons */}
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 hidden group-hover:flex gap-2">
-              <button
-                onClick={() => setIsEditing(true)}
-                className="p-1 rounded hover:bg-blue/20 transition"
-              >
-                <Pencil size={18} className="text-blue" />
-              </button>
+            {/* Three Dots Icon with Inline Menu */}
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+              <div className="relative" ref={menuRef}>
+                <button
+                  onClick={() => setShowMenu(!showMenu)}
+                  className="p-1 rounded-4xl hover:bg-gray-600 transition"
+                >
+                  <MoreVertical size={20} className="text-gray-200" />
+                </button>
 
-              <button
-                onClick={handleDelete}
-                className="p-1 rounded hover:bg-red-400/20 transition"
-              >
-                <Trash2 size={18} className="text-red-500" />
-              </button>
+                {showMenu && (
+                  <div className="absolute top-0 left-full ml-4 z-10 bg-card rounded-2xl shadow text-sm w-28 px-1 py-1">
+                    <button
+                      onClick={() => {
+                        setIsEditing(true);
+                        setShowMenu(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-600 hover:rounded-2xl text-blue-600"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        handleDelete(e);
+                        setShowMenu(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-600 hover:rounded-2xl text-red-600"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className=" my-2">
+        <div className="my-2">
           <form
             onSubmit={handleEditSubmit}
-            className="flex flex-col gap-4 p-4 rounded-lg bg-card border-blue border-1 text-textcol shadow transition"
+            className="flex flex-col gap-4 p-4 rounded-4xl bg-card border-blue border-1 text-textcol shadow transition"
           >
             <label className="flex flex-col gap-2 text-xl">
               Task:
@@ -77,7 +107,7 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="text-center px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition"
+                className="text-center px-4 py-2 rounded-4xl bg-red-100 text-red-600 hover:bg-red-200 transition"
               >
                 Cancel
               </button>
@@ -85,7 +115,7 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
               <button
                 type="submit"
                 disabled={!taskInput.trim()}
-                className={`text-center px-4 py-2 rounded-lg transition ${
+                className={`text-center px-4 py-2 rounded-4xl transition ${
                   !taskInput.trim()
                     ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                     : 'bg-green text-white hover:bg-blue/80'
