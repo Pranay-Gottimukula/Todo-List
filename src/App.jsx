@@ -1,7 +1,8 @@
-import './App.css'
-import { useEffect, useState } from 'react'
-import TodoList from './components/TodoList/TodoList'
+import './App.css';
+import { useEffect, useState } from 'react';
+import TodoList from './components/TodoList/TodoList';
 import ToggleForm from './components/ToggleForm/ToggleForm';
+import Navbar from './components/Navbar/Navbar';
 
 
 function App() {
@@ -46,11 +47,13 @@ function App() {
     return `${year}${month}${day}${hours}${minutes}${seconds}`;
   }
 
+  localStorage.removeItem('todo');
+
   
 
   return (
     <>
-    <h1 className='text-5xl text-textcol bg-card font-bold p-4'>To-Do List</h1>
+    <Navbar />
     <div className='flex flex-col items-center'>
       <div className="w-full max-w-xl my-3 px-4">
         <TodoList status={'Due'} todos={todos} toggleTodo={toggleTodo} toggleEdit={handleEdit} toggleDelete={handleDelete}/>

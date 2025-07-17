@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { Pencil, Trash2, MoreVertical } from 'lucide-react';
 
-export default function ListItems({ id, label, value, onToggle, onEdit, onDelete }) {
+export default function ListItems({ id, label, value, status, onToggle, onEdit, onDelete }) {
   const [taskInput, setTaskInput] = useState(label);
   const [isEditing, setIsEditing] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -38,7 +38,13 @@ export default function ListItems({ id, label, value, onToggle, onEdit, onDelete
       {!isEditing ? (
         <div className="flex justify-center w-full">
           <div className="relative group w-full max-w-xl">
-            <label className="flex items-center gap-3 p-3 my-2 rounded-4xl border-blue border-1 bg-card text-textcol cursor-pointer hover:bg-blue/10 transition">
+            <label
+              className={`flex items-center gap-3 p-3 my-2 rounded-4xl border-blue border-1 bg-card text-textcol cursor-pointer transition ${
+                status === 'Completed'
+                  ? 'opacity-50 cursor-default'
+                  : 'hover:bg-blue/10'
+              }`}
+            >
               <input
                 type="radio"
                 checked={value}

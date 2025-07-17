@@ -7,7 +7,7 @@ export default function TodoList({status, todos, toggleTodo, toggleEdit, toggleD
     return(
         <>
         <div className="px-6">
-            <h2 className="text-3xl pr-text">{status}:</h2>
+            <h2 className="text-xl text-textcol">{status}:</h2>
             
             {filteredTodos.map((todo) => (
                 <div key={todo.id}>
@@ -15,6 +15,7 @@ export default function TodoList({status, todos, toggleTodo, toggleEdit, toggleD
                     label={todo.label}
                     value={todo.done}
                     id={todo.id}
+                    status={status}
                     onToggle={() => toggleTodo(todo.id)}
                     onEdit={toggleEdit}
                     onDelete={toggleDelete}

@@ -32,7 +32,7 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
             placeholder="Enter the Task"
             onChange={(e) => setTaskInput(e.target.value)}
             required
-            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue"
+            className="p-2 rounded-lg border border-gray-300 focus:outline-none"
           />
         </label>
 
