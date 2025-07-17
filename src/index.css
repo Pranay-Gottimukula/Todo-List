@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bgcol: #2E3440;
-  --color-card: #3B4252;
-  --color-textcol: #ECEFF4;
-  --color-muted: #D8DEE9;
-  --color-blue: #81A1C1;
-  --color-green: #A3BE8C;
+  --color-bgcol: #12151c;     /* Ultra dark, soft black-blue background */
+  --color-card: #1e222a;      /* Slightly raised card surface */
+  --color-textcol: #e6edf3;   /* Smooth light text (not harsh white) */
+  --color-muted: #7f8c9f;     /* Muted gray-blue for subtler elements */
+  --color-blue: #56b6c2;      /* Teal cyan – modern and calm */
+  --color-green: #89ca78;     /* Slightly earthy green – great for success/active */
 }

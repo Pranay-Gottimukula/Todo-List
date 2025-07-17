@@ -8,7 +8,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex justify-between items-center bg-card text-textcol px-4 py-3">
+    <div className="flex justify-between items-center bg-card text-textcol px-4 py-4">
       <h1 className="text-3xl sm:text-4xl font-bold">To-Do List</h1>
 
       <button

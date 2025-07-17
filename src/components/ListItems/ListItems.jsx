@@ -39,7 +39,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
         <div className="flex justify-center w-full">
           <div className="relative group w-full max-w-xl">
             <label
-              className={`flex items-center gap-3 p-3 my-2 rounded-4xl border-blue border-1 bg-card text-textcol cursor-pointer transition ${
+              className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-3 my-2 rounded-4xl border-blue border-1 bg-card text-textcol cursor-pointer transition ${
                 status === 'Completed'
                   ? 'opacity-50 cursor-default'
                   : 'hover:bg-blue/10'
@@ -49,9 +49,9 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
                 type="radio"
                 checked={value}
                 onClick={onToggle}
-                className="accent-blue w-5 h-5 cursor-pointer"
+                className="accent-blue w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
               />
-              <span className="text-xl">{label}</span>
+              <span className="text-base sm:text-xl">{label}</span>
             </label>
 
             {/* Three Dots Icon with Inline Menu */}
@@ -98,7 +98,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
             onSubmit={handleEditSubmit}
             className="flex flex-col gap-4 p-4 rounded-4xl bg-card border-blue border-1 text-textcol shadow transition"
           >
-            <label className="flex flex-col gap-2 text-xl">
+            <label className="flex flex-col gap-2 text-lg sm:text-xl">
               Task:
               <input
                 type="text"
@@ -107,7 +107,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
                 placeholder="Enter the Task"
                 onChange={(e) => setTaskInput(e.target.value)}
                 required
-                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue"
+                className="text-sm sm:text-base p-2 sm:p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue"
               />
             </label>
 
@@ -115,7 +115,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="text-center px-4 py-2 rounded-4xl bg-red-100 text-red-600 hover:bg-red-200 transition"
+                className="sm:text-base text-sm text-center px-3 sm:px-4 py-1 sm:py-2 rounded-4xl bg-red-100 text-red-600 hover:bg-red-200 transition"
               >
                 Cancel
               </button>
@@ -123,7 +123,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
               <button
                 type="submit"
                 disabled={!taskInput.trim()}
-                className={`text-center px-4 py-2 rounded-4xl transition ${
+                className={`sm:text-base text-sm text-center px-3 sm:px-4 py-1 sm:py-2 rounded-4xl transition ${
                   !taskInput.trim()
                     ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                     : 'bg-green text-white hover:bg-blue/80'
