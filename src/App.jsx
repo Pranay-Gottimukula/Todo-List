@@ -1,16 +1,19 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ToggleForm from './components/ToggleForm/ToggleForm';
 
 
 function App() {
-  const [todos, setTodos] = useState([
-    { label: "groceries", id: 20250715162701 ,done: true },
-    { label: "assignments", id: 20250715162702, done: false },
-    { label: "exercise", id: 20250715162703, done: false },
-    { label: "reading", id: 20250715162704, done: false }
-  ]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) :[
+    { label: "Create a Task", id: 10000000000000, done: false }]
+  });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   function toggleTodo(id) {
     const updated = todos.map(todo =>
