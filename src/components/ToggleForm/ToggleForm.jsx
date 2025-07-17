@@ -24,12 +24,12 @@ export default function ToggleForm({todos, setTodos, getCurrentTimestamp}){
         className="flex flex-col gap-4 p-4 rounded-4xl bg-card border-blue border-1 text-textcol shadow transition"
         >
         <label className="flex flex-col gap-2 text-lg sm:text-xl">
-          Task:
+          New Task:
           <input
             type="text"
             name="task"
             value={taskInput}
-            placeholder="Enter the Task"
+            placeholder="Enter new Task"
             onChange={(e) => setTaskInput(e.target.value)}
             required
             className="p-2 rounded-lg border border-gray-300 focus:outline-none text-sm sm:text-base"

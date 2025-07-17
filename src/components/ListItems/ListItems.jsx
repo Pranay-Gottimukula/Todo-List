@@ -99,7 +99,7 @@ export default function ListItems({ id, label, value, status, onToggle, onEdit, 
             className="flex flex-col gap-4 p-4 rounded-4xl bg-card border-blue border-1 text-textcol shadow transition"
           >
             <label className="flex flex-col gap-2 text-lg sm:text-xl">
-              Task:
+              Edit Task:
               <input
                 type="text"
                 name="task"
