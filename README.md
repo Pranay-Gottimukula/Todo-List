@@ -59,15 +59,15 @@ It allows you to add, edit, mark as completed, and delete tasks, with persistenc
 ## Project Structure
 
 todolist/
-├── public/            # Static assets
-├── src/
-│   ├── components/    # Reusable React components (Navbar, TodoList, ListItems, ToggleForm)
-│   ├── App.jsx        # Main App entry
-│   ├── index.css      # Tailwind base styles
-│   └── main.jsx       # React DOM render
-├── package.json
-├── tailwind.config.js # Tailwind configuration
-└── vite.config.js     # Vite configuration
+    ├── public/            # Static assets
+        ├── src/
+            │   ├── components/    # Reusable React components (Navbar, TodoList, ListItems ToggleForm)
+                │   ├── App.jsx        # Main App entry
+                │   ├── index.css      # Tailwind base styles
+                │   └── main.jsx       # React DOM render
+                ├── package.json
+                ├── tailwind.config.js # Tailwind configuration
+                └── vite.config.js     # Vite configuration
 
 ## Deployment
 This project is deployed on Netlify.
