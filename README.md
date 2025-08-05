@@ -24,50 +24,22 @@ It allows you to add, edit, mark as completed, and delete tasks, with persistenc
 
 - [React 19](https://react.dev/) – UI Library  
 - [Vite](https://vitejs.dev/) – Build tool  
-- [Tailwind CSS v4](https://tailwindcss.com/) – Styling  
-- [Lucide React](https://lucide.dev/) – Icons  
-- [ESLint](https://eslint.org/) – Linting  
+- [Tailwind CSS v4](https://tailwindcss.com/) – Styling   
 
 ---
-
-## Installation & Setup
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Pranay-Gottimukula/todolist.git
-   cd todolist
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-4. Build for production::
-
-   ```bash
-   npm run build
-   ```
 
 ## Project Structure
 
 todolist/
 ├── public/ # Static assets
-├── src/
-│ ├── components/ # Reusable React components (Navbar, TodoList, ListItems, ToggleForm)
-│ ├── App.jsx # Main App entry
-│ ├── index.css # Tailwind base styles
-│ └── main.jsx # React DOM render
-├── package.json
-├── tailwind.config.js # Tailwind configuration
-└── vite.config.js # Vite configuration
+   ├── src/
+   │ ├── components/ # Reusable React components (Navbar, TodoList, ListItems, ToggleForm)
+   │ ├── App.jsx # Main App entry
+   │ ├── index.css # Tailwind base styles
+   │ └── main.jsx # React DOM render
+   ├── package.json
+   ├── tailwind.config.js # Tailwind configuration
+   └── vite.config.js # Vite configuration
 
 ## Deployment
 This project is deployed on Netlify.
